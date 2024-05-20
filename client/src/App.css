@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+
+.App{
+    min-height: 100vh;
+    display: flex;
+    background: url("./assets/chat-bg.png");
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    background-size:30%;
+}
