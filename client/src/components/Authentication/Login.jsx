@@ -116,7 +116,7 @@ function Login() {
         variant="solid"
         textColor="white"
         onClick={()=>{
-            setEmail("guest@example.com");
+            setEmail("guest@email.com");
             setpassword("123456");
         }}
         width="100%"
