@@ -4,6 +4,7 @@ const dotenv=require("dotenv");
 const cors=require("cors");
 const dbConnection=require("./config/db");
 const userRoutes=require("./routes/userRoutes");
+const chatRoutes = require("./routes/chatRoutes");
 const {notFound,errorHandler}=require("./middlewares/errorMiddleware");
 
 dotenv.config();
@@ -22,6 +23,7 @@ app.get("/",(req,res)=>{
 
 
 app.use("/api/user",userRoutes);
+app.use("/api/chat",chatRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
