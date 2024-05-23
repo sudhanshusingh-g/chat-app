@@ -1,23 +1,30 @@
-import  { useEffect } from 'react'
-import { fetchChats } from '../APIs/chats';
+import { Box } from "@chakra-ui/react";
+import { ChatState } from "../context/ChatProvider"
+import SideNav from "../components/others/SideNav";
+import MyChats from "../components/others/MyChats";
+import ChatBox from "../components/others/ChatBox";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 function Chats() {
-
-    const getChats = async () => {
-      try {
-        const {data} = await fetchChats();
-        console.log(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
+  const navigate=useNavigate();
+  const {user}=ChatState();
+  console.log(user);
     useEffect(()=>{
-        getChats();
+      const user = JSON.parse(localStorage.getItem("user"));
+
+      if (!user) navigate("/");
     },[])
 
   return (
-    <div>Chats</div>
-  )
+    <div style={{ width: "100%"}}>
+      {user && <SideNav />}
+      <Box display="flex" justifyContent="space-between" w="100%" h="90vh">
+        {user && <MyChats/>}
+        {user && <ChatBox />}
+      </Box>
+    </div>
+  );
 }
 
 export default Chats
