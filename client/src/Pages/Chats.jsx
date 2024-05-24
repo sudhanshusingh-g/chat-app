@@ -19,7 +19,7 @@ function Chats() {
   return (
     <div style={{ width: "100%"}}>
       {user && <SideNav />}
-      <Box display="flex" justifyContent="space-between" w="100%" h="90vh">
+      <Box display="flex" justifyContent="space-between" w="100%" h="85vh">
         {user && <MyChats/>}
         {user && <ChatBox />}
       </Box>
