@@ -5,6 +5,7 @@ import axios from "axios";
 import { GoPlus } from "react-icons/go";
 import ChatLoading from "./ChatLoading";
 import { getSender } from "../../config/ChatLogic";
+import GroupChatModal from "./GroupChatModal";
 
 function MyChats() {
   const [loggedUser, setLoggedUser] = useState();
@@ -60,17 +61,18 @@ function MyChats() {
         alignItems={"center"}
       >
         Chats
-        <Button display={"flex"} alignItems={"center"} gap={"0.4rem"}>
-          <GoPlus />
-          Create Group
-        </Button>
+        <GroupChatModal>
+          <Button display={"flex"} alignItems={"center"} gap={"0.4rem"}>
+            <GoPlus />
+            Create Group
+          </Button>
+        </GroupChatModal>
       </Box>
 
       <Box
         display={"flex"}
         flexDir={"column"}
         p={2}
-        // bg={"#ccc"}
         w={"100%"}
         h={"100%"}
         borderRadius={"lg"}
@@ -90,9 +92,9 @@ function MyChats() {
                 borderRadius={"lg"}
               >
                 <Text>
-                  {!chat.isGroupChat
-                    ? getSender(loggedUser._id, c.users)
-                    : chat.chatName}
+                  {!c.isGroupChat
+                    ? getSender(loggedUser, c.users)
+                    : c.chatName}
                 </Text>
               </Box>
             ))}
