@@ -13,7 +13,7 @@ function SideNav() {
   const [loading, setLoading] = useState(false);
   const [loadingChat, setLoadingChat] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const {user,chats,setChats,setSelectedChat}=ChatState();
+  const {user,chat,setChat,setSelectedChat}=ChatState();
   const navigate=useNavigate();
   const toast=useToast();
 
@@ -72,7 +72,7 @@ function SideNav() {
       };
       const { data } = await axios.post(`/api/chat`, { userId }, config);
 
-      if (!chats.find((c) => c._id === data._id)) setChats([data, ...chats]);
+      if (!chat.find((c) => c._id === data._id)) setChat([data, ...chat]);
       setSelectedChat(data);
       setLoadingChat(false);
       onClose();
