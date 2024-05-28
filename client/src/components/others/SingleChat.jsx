@@ -4,6 +4,7 @@ import { Box, Text } from "@chakra-ui/react";
 import { MdArrowBack } from "react-icons/md";
 import { getSender,getSenderFull } from "../../config/ChatLogic";
 import Profile from "./Profile";
+import UpdateGroupChat from "./UpdateGroupChat";
 
 
 function SingleChat({ fetchAgain, setFetchAgain }) {
@@ -36,14 +37,29 @@ function SingleChat({ fetchAgain, setFetchAgain }) {
             ) : (
               <>
                 {selectedChat.chatName.toUpperCase()}
-                {/* <UpdateGroupChatModal
-                    fetchMessages={fetchMessages}
+                <UpdateGroupChat
+                    // fetchMessages={fetchMessages}
                     fetchAgain={fetchAgain}
                     setFetchAgain={setFetchAgain}
-                  /> */}
+                  />
               </>
             )}
           </Text>
+
+          <Box
+            d="flex"
+            flexDir="column"
+            justifyContent="flex-end"
+            p={3}
+            w="100%"
+            h="100%"
+            borderRadius="lg"
+            overflowY="hidden"
+          >
+            
+
+            
+          </Box>
         </>
       ) : (
         <Box
