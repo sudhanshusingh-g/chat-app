@@ -197,7 +197,7 @@ function UpdateGroupChat({ fetchMessages, fetchAgain, setFetchAgain }) {
         setFetchAgain(!fetchAgain);
         fetchMessages();
       } else {
-        setSelectedChat(undefined); // Clear selected chat if the current user is removed
+        setSelectedChat(undefined); 
       }
 
       setLoading(false);
