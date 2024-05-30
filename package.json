@@ -4,7 +4,8 @@
   "description": "A real time chat application using web socket.io",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server/server.js"
+    "start": "node server/server.js",
+    "server": "nodemon server/server.js"
   },
   "author": "Sudhanshu Singh",
   "license": "ISC",
