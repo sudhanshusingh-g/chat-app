@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server/server.js",
-    "server": "nodemon server/server.js"
+    "server": "nodemon server/server.js",
+    "build":"npm install && npm install --prefix client && npm run build --prefix client"
   },
   "author": "Sudhanshu Singh",
   "license": "ISC",
