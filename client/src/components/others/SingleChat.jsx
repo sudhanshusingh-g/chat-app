@@ -8,13 +8,17 @@ import UpdateGroupChat from "./UpdateGroupChat";
 import axios from "axios";
 import '../styles.css'
 import ScrollableChat from "./ScrollableChat";
+import io from "socket.io-client";
 
+const ENDPOINT="http://localhost:8000"
+var socket, selectedChatCompare;
 
 function SingleChat({ fetchAgain, setFetchAgain }) {
   const { user, selectedChat, setSelectedChat } = ChatState();
   const [message, setMessage] = useState([]);
   const [loading, setLoading] = useState(false);
   const [newMessage,setNewMessage]=useState("");
+  const [socketConnected,setSocketConnected]=useState(false);
   const toast=useToast();
 
 
@@ -38,7 +42,7 @@ function SingleChat({ fetchAgain, setFetchAgain }) {
        setMessage(data);
        setLoading(false);
 
-      //  socket.emit("join chat", selectedChat._id);
+       socket.emit("join chat", selectedChat._id);
      } catch (error) {
        toast({
          title: "Error Occured!",
@@ -88,9 +92,9 @@ function SingleChat({ fetchAgain, setFetchAgain }) {
   };
 
   useEffect(() => {
-    // socket = io(ENDPOINT);
-    // socket.emit("setup", user);
-    // socket.on("connected", () => setSocketConnected(true));
+    socket = io(ENDPOINT);
+    socket.emit("setup", user);
+    socket.on("connected", () => setSocketConnected(true));
     // socket.on("typing", () => setIsTyping(true));
     // socket.on("stop typing", () => setIsTyping(false));
 
@@ -100,7 +104,7 @@ function SingleChat({ fetchAgain, setFetchAgain }) {
   useEffect(() => {
     fetchMessages();
 
-    // selectedChatCompare = selectedChat;
+    selectedChatCompare = selectedChat;
     // eslint-disable-next-line
   }, [selectedChat]);
 
@@ -223,7 +227,7 @@ function SingleChat({ fetchAgain, setFetchAgain }) {
               <Input
                 variant="outline"
                 placeholder="Enter a message.."
-                // value={newMessage}
+                value={newMessage}
                 onChange={typingHandler}
               />
             </FormControl>
