@@ -110,7 +110,9 @@ function Login() {
       >
         Login
       </Button>
+      {/*
 
+* 
       <Button
         colorScheme="red"
         variant="solid"
@@ -123,6 +125,7 @@ function Login() {
       >
         Guest user
       </Button>
+      */}
     </VStack>
   );
 }
